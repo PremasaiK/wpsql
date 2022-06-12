@@ -20,10 +20,6 @@ metadata:
   labels:
     app: wordpress
 spec:
-  selector:
-    matchLabels:
-      app: wordpress
-      tier: frontend  
   accessModes:
     - ReadWriteOnce
   resources:
@@ -37,6 +33,10 @@ metadata:
   labels:
     app: wordpress
 spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend  
   strategy:
     type: Recreate
   template:
