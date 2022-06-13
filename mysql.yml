@@ -7,10 +7,11 @@ metadata:
 spec:
   ports:
     - port: 3306
-      targetPort: 3300
+      nodePort: 3300
   selector:
     app: wordpress
     tier: mysql
+  type: NodePort
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
