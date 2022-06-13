@@ -6,12 +6,12 @@ metadata:
     app: wordpress
 spec:
   ports:
-   - protocol: TCP
-     port: 3306
-     targetPort: 3306
+   - port: 3306
+     nordPort: 3306
   selector:
     app: wordpress
-    tier: mysql
+    tier: frontend
+  type: NodePort
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -36,14 +36,14 @@ spec:
   selector:
     matchLabels:
       app: wordpress
-      tier: mysql
+      tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: wordpress
-        tier: mysql
+        tier: frontend
     spec:
       containers:
       - image: mysql:5.6
