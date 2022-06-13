@@ -1,2 +1,2 @@
- FROM wordpress:php7.1-apache
+ FROM wordpress
   COPY . /usr/src/wordpress/
