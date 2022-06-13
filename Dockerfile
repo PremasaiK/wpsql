@@ -1,4 +1,2 @@
-FROM mysql:5.6 as premasaik/mysql
-
-FROM wordpress as premasaik/wordpress
+FROM wordpress 
   COPY . /usr/src/wordpress/
