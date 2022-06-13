@@ -11,10 +11,10 @@ ports:
     port: 3306
     targetPort: 3306
     nodePort: 32002
-  type: NodePort
   selector:
     app: wordpress
     tier: mysql
+  type: NodePort
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
