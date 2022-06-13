@@ -34,14 +34,14 @@ spec:
   selector:
     matchLabels:
       app: wordpress
-      tier: frontend
+      tier: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: wordpress
-        tier: frontend
+        tier: mysql
     spec:
       containers:
       - image: mysql:5.6
