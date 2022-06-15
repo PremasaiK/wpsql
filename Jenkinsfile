@@ -37,11 +37,11 @@ pipeline{
 			steps{
 				sshagent(['premasaik-k8s'])
 				{
-					sh 'scp -v -r -o StrictHostKeyChecking=no /home/premasai/wpsql premasai@127.0.0.1:/home/premasai'
+					sh 'scp -v -r -o StrictHostKeyChecking=no /home/premasai/wpsql/wordpress.yml /home/premasai/wpsql/mysql.yml premasai@127.0.0.1:/home/premasai'
 					
 					script{
 						try{
-              sh 'ssh premasai@127.0.0.1 kubectl apply -k ./'
+              						sh 'ssh premasai@127.0.0.1 kubectl apply -k ./'
 							//sh 'ssh premasai@127.0.0.1 kubectl apply -f wordpress-deployment.yaml'
 							sh 'ssh premasai@127.0.0.1 kubectl get pods | grep "^mysql*"'
 							sh 'ssh premasai@127.0.0.1 kubectl get pods | grep "^word*"'
