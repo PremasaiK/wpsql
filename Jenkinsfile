@@ -43,12 +43,12 @@ pipeline{
 						try{
               						sh 'ssh premasai@127.0.0.1 kubectl apply -k ./'
 							//sh 'ssh premasai@127.0.0.1 kubectl apply -f wordpress-deployment.yaml'
-							//sh 'ssh premasai@127.0.0.1 kubectl get pods | grep "^mysql*"'
+							sh 'ssh premasai@127.0.0.1 kubectl get pods | grep "^wordpress-mysql*"'
 							sh 'ssh premasai@127.0.0.1 kubectl get pods | grep "^word*"'
 							sleep 5
-							ret1 = sh ( script:'ssh premasai@127.0.0.1 kubectl get pods | grep "^mysql*" | awk \'{print $3}\'',returnStdout: true).trim()
+							ret1 = sh ( script:'ssh premasai@127.0.0.1 kubectl get pods | grep "^wordpress-mysql*" | awk \'{print $3}\'',returnStdout: true).trim()
 							println ret1
-							ret2 = sh ( script:'ssh premasai@127.0.0.1 kubectl get pods | grep "^mysql*" | awk \'{print $1}\'',returnStdout: true).trim()
+							ret2 = sh ( script:'ssh premasai@127.0.0.1 kubectl get pods | grep "^wordpress*" | awk \'{print $1}\'',returnStdout: true).trim()
 							echo "1"
 							println "${ret2}"
 							echo "2"
