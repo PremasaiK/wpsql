@@ -10,6 +10,12 @@ pipeline{
 
 	stages {
 
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t premasaik/wordpress.'
+			}
+		}
 		stage('Login to Docker') {
 
 			steps {
